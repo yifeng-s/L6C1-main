@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 import numpy as np
 import pandas as pd
-from joblib import load
+import joblib
+print('joblib:{}'.format(joblib.__version__))
 import os
 
 app = Flask(__name__)
@@ -15,7 +16,7 @@ def hello_world():
         myage = request.form['age']
         mygender = request.form['gender']
         print('yifengs1')
-        model = load('app/drink-recommender.joblib')
+        model = joblib.load('app/drink-recommender.joblib')
         print('yifengs2')
         np_arr = np.array([myage, mygender])
         print('yifengs3')
